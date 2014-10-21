@@ -100,10 +100,12 @@
 }
 
 -(id)initWithViewController:(UIViewController*)viewController {
-	return [self initWithViewController:viewController delegate:nil];
+    return [self initWithViewController:viewController arrowDirection:FPPopoverArrowDirectionAny contentSize:CGSizeMake(200, 300) delegate:nil];
 }
 
 -(id)initWithViewController:(UIViewController*)viewController
+             arrowDirection:(FPPopoverArrowDirection)arrowDirection
+                contentSize:(CGSize)contentSize
 				   delegate:(id<FPPopoverControllerDelegate>)delegate
 {
     self = [super init];
@@ -112,7 +114,7 @@
 		self.delegate = delegate;
         
         self.alpha = 1.0;
-        self.arrowDirection = FPPopoverArrowDirectionAny;
+        self.arrowDirection = arrowDirection;
         self.view.userInteractionEnabled = YES;
         _border = YES;
         
@@ -134,10 +136,17 @@
             [bself dismissPopoverAnimated:YES];
         }];
 
-        self.contentSize = CGSizeMake(200, 300); //default size
-
-        _contentView = [[FPPopoverView alloc] initWithFrame:CGRectMake(0, 0, 
-                                              self.contentSize.width, self.contentSize.height)];
+        CGFloat w = contentSize.width;
+        CGFloat h = contentSize.height;
+        if (arrowDirection == FPPopoverArrowDirectionDown || arrowDirection == FPPopoverArrowDirectionUp) {
+            h += 20;
+        }
+        else if (arrowDirection == FPPopoverArrowDirectionLeft || arrowDirection == FPPopoverArrowDirectionRight) {
+            w += 20;
+        }
+        self.contentSize = CGSizeMake(w, h);
+        NSLog(@"content size: %fx%f", w, h);
+        _contentView = [[FPPopoverView alloc] initWithFrame:CGRectMake(0, 0, w, h)];
         
         _viewController = SAFE_ARC_RETAIN(viewController);
         
@@ -458,7 +467,7 @@
     {
 
         //ok, will be vertical
-        if(ht == best_h || self.arrowDirection == FPPopoverArrowDirectionDown)
+        if((self.arrowDirection != FPPopoverArrowDirectionUp && ht == best_h) || self.arrowDirection == FPPopoverArrowDirectionDown)
         {
             //on the top and arrow down
             bestDirection = FPPopoverArrowDirectionDown;

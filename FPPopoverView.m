@@ -338,7 +338,7 @@
     else if(self.tint == FPPopoverWhiteTint)
     {
         colors[0] = colors[1] = colors[2] = 1.0;
-        colors[0] = colors[1] = colors[2] = 1.0;
+        colors[4] = 1; colors[5] = 1;  colors[6] = 1;
         colors[3] = colors[7] = 1.0;
     }
     
@@ -372,7 +372,7 @@
     //  Draw a linear gradient from top to bottom
     CGPoint start;
     CGPoint end;
-    if(_arrowDirection == FPPopoverArrowDirectionUp || _arrowDirection == FPPopoverNoArrow)
+    if(self.border && (_arrowDirection == FPPopoverArrowDirectionUp || _arrowDirection == FPPopoverNoArrow))
     {
         start = CGPointMake(self.bounds.size.width/2.0, 0);
         end = CGPointMake(self.bounds.size.width/2.0,40);

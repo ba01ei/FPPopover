@@ -59,7 +59,9 @@
  **/
 -(id)initWithViewController:(UIViewController*)viewController;
 -(id)initWithViewController:(UIViewController*)viewController
-				   delegate:(id<FPPopoverControllerDelegate>)delegate;
+             arrowDirection:(FPPopoverArrowDirection)arrowDirection
+                contentSize:(CGSize)contentSize
+                   delegate:(id<FPPopoverControllerDelegate>)delegate;
 
 /** @brief Presenting the popover from a specified view **/
 -(void)presentPopoverFromView:(UIView*)fromView;
