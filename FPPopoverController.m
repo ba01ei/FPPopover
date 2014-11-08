@@ -138,14 +138,14 @@
 
         CGFloat w = contentSize.width;
         CGFloat h = contentSize.height;
-        if (arrowDirection == FPPopoverArrowDirectionDown || arrowDirection == FPPopoverArrowDirectionUp) {
-            h += 20;
+        if (arrowDirection & FPPopoverArrowDirectionDown || arrowDirection & FPPopoverArrowDirectionUp) {
+            h += FP_POPOVER_ARROW_HEIGHT;
         }
-        else if (arrowDirection == FPPopoverArrowDirectionLeft || arrowDirection == FPPopoverArrowDirectionRight) {
-            w += 20;
+        else if (arrowDirection & FPPopoverArrowDirectionLeft || arrowDirection & FPPopoverArrowDirectionRight) {
+            w += FP_POPOVER_ARROW_HEIGHT;
         }
         self.contentSize = CGSizeMake(w, h);
-        NSLog(@"content size: %fx%f", w, h);
+        // NSLog(@"content size: %fx%f", w, h);
         _contentView = [[FPPopoverView alloc] initWithFrame:CGRectMake(0, 0, w, h)];
         
         _viewController = SAFE_ARC_RETAIN(viewController);

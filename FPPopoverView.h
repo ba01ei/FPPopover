@@ -10,6 +10,11 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
+#define FP_POPOVER_ARROW_HEIGHT 11.0
+#define FP_POPOVER_ARROW_BASE 20.0
+#define FP_POPOVER_RADIUS 10.0
+
+
 typedef enum FPPopoverArrowDirection: NSUInteger {
     FPPopoverArrowDirectionUp = 1UL << 0,
     FPPopoverArrowDirectionDown = 1UL << 1,
