@@ -20,8 +20,8 @@
 @protocol FPPopoverControllerDelegate <NSObject>
 
 @optional
-- (void)popoverControllerDidDismissPopover:(FPPopoverController *)popoverController;
-- (void)presentedNewPopoverController:(FPPopoverController *)newPopoverController 
+- (void)FPPopoverControllerDidDismissPopover:(FPPopoverController *)popoverController;
+- (void)presentedNewFPPopoverController:(FPPopoverController *)newPopoverController
           shouldDismissVisiblePopover:(FPPopoverController*)visiblePopoverController;
 @end
 

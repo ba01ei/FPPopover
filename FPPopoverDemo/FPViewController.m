@@ -107,7 +107,7 @@
 }
 
 
-- (void)presentedNewPopoverController:(FPPopoverController *)newPopoverController 
+- (void)presentedNewFPPopoverController:(FPPopoverController *)newPopoverController
           shouldDismissVisiblePopover:(FPPopoverController*)visiblePopoverController
 {
     [visiblePopoverController dismissPopoverAnimated:YES];

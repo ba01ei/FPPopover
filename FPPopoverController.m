@@ -324,9 +324,9 @@
 -(void)dismissPopover
 {
     [self.view removeFromSuperview];
-    if([self.delegate respondsToSelector:@selector(popoverControllerDidDismissPopover:)])
+    if([self.delegate respondsToSelector:@selector(FPPopoverControllerDidDismissPopover:)])
     {
-        [self.delegate popoverControllerDidDismissPopover:self];
+        [self.delegate FPPopoverControllerDidDismissPopover:self];
     }
      _window=nil;
      _parentView=nil;
@@ -412,9 +412,9 @@
 {
     if(notification.object != self)
     {
-        if([self.delegate respondsToSelector:@selector(presentedNewPopoverController:shouldDismissVisiblePopover:)])
+        if([self.delegate respondsToSelector:@selector(presentedNewFPPopoverController:shouldDismissVisiblePopover:)])
         {
-            [self.delegate presentedNewPopoverController:notification.object
+            [self.delegate presentedNewFPPopoverController:notification.object
                              shouldDismissVisiblePopover:self];
         }
     }
